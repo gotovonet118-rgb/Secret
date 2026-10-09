@@ -237,6 +237,23 @@ h2::after {
   border-radius: 12px;
   border: 1px solid var(--pink-soft);
   box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.timeline-text-block {
+  flex: 1;
+}
+
+.timeline-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid var(--pink-soft);
+  flex-shrink: 0;
 }
 
 .timeline-date {
@@ -397,6 +414,95 @@ h2::after {
 }
 
 /* ==========================================
+   СТИЛИ ДЛЯ ОКНА ВВОДА ПАРОЛЯ
+   ========================================== */
+.pass-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 240, 245, 0.96);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.pass-modal.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.pass-box {
+  background: white;
+  padding: 30px 25px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 350px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+  border: 2px solid var(--pink-medium);
+}
+
+.pass-icon {
+  font-size: 2.5rem;
+  color: var(--pink-bright);
+  margin-bottom: 10px;
+}
+
+.pass-box h2 {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+
+.pass-box p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.pass-input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid var(--pink-medium);
+  border-radius: 12px;
+  font-size: 1.1rem;
+  text-align: center;
+  outline: none;
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+
+.pass-input:focus {
+  border-color: var(--pink-deep);
+}
+
+.pass-btn {
+  width: 100%;
+  background: linear-gradient(45deg, var(--pink-bright), var(--pink-deep));
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 20, 147, 0.3);
+}
+
+.pass-error {
+  color: #d9534f;
+  font-size: 0.85rem;
+  margin-top: 10px;
+  display: none;
+}
+
+/* ==========================================
    АДАПТИВНОСТЬ ПОД МОБИЛЬНЫЕ УСТРОЙСТВА
    ========================================== */
 @media (max-width: 480px) {
@@ -424,39 +530,7 @@ h2::after {
     padding: 20px 15px;
     border-radius: 16px;
   }
-}
-/* Обновленный блок текста истории */
-.timeline-content {
-  background: white;
-  padding: 15px;
-  border-radius: 12px;
-  border: 1px solid var(--pink-soft);
-  box-shadow: 0 3px 10px rgba(0,0,0,0.03);
-  
-  /* Включаем выравнивание по горизонтали (текст слева, фото справа) */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-}
 
-/* Контейнер с текстом внутри карточки */
-.timeline-text-block {
-  flex: 1; /* Текст занимает всё свободное место слева */
-}
-
-/* Обновленный стиль для фотографии справа */
-.timeline-img {
-  width: 100px;         /* Ширина фото */
-  height: 100px;        /* Высота фото */
-  object-fit: cover;    /* Сохраняет пропорции фото без искажения */
-  border-radius: 10px;
-  border: 2px solid var(--pink-soft);
-  flex-shrink: 0;       /* Запрещает фото сжиматься */
-}
-
-/* На совсем маленьких экранах (телефонах) фото мягко уменьшится */
-@media (max-width: 480px) {
   .timeline-img {
     width: 80px;
     height: 80px;
