@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Наша Годовщина ❤️</title>
+  
+  <!-- Подключение FontAwesome для иконок -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Подключение внешнего CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Анимированный фон -->
+  <div id="hearts-container"></div>
+
+  <!-- Аудио-плеер -->
+  <audio id="bg-music" loop>
+    <source src="Нервы - Батареи.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="container">
+
+    <!-- 1. Главная шапка -->
+    <section class="hero">
+      <h1>С Годовщиной, Любимая! ❤️</h1>
+      <p class="subtitle">Ты — лучшее, что случалось со мной</p>
+      
+      <div class="music-control">
+        <button class="music-btn" id="music-toggle">
+          <i class="fas fa-music"></i> <span>Включить музыку</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 2. Таймер "Мы вместе уже" -->
+    <section>
+      <h2>Мы вместе уже</h2>
+      <div class="timer-grid">
+        <div class="timer-box">
+          <div class="timer-value" id="days">000</div>
+          <div class="timer-label">Дней</div>
+        </div>
+        <div class="timer-box">
+          <div class="timer-value" id="hours">00</div>
+          <div class="timer-label">Часов</div>
+        </div>
+        <div class="timer-box">
+          <div class="timer-value" id="minutes">00</div>
+          <div class="timer-label">Минут</div>
+        </div>
+        <div class="timer-box">
+          <div class="timer-value" id="seconds">00</div>
+          <div class="timer-label">Секунд</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Наша история (Фото расположено СПРАВА от текста) -->
+    <section>
+      <h2>Наша История Любви</h2>
+      <div class="timeline">
+        
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fas fa-heart"></i></div>
+          <div class="timeline-content">
+            <div class="timeline-text-block">
+              <div class="timeline-date">1 июня 2024</div>
+              <div class="timeline-title">Первая встреча</div>
+              <div class="timeline-text">Тот самый день, когда я впервые увидел твои невероятные глаза и улыбку.</div>
+            </div>
+            <img src="photo1.gif" alt="Первая встреча" class="timeline-img">
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fas fa-coffee"></i></div>
+          <div class="timeline-content">
+            <div class="timeline-text-block">
+              <div class="timeline-date">7 декабря 2024</div>
+              <div class="timeline-title">Начало нашей истории</div>
+              <div class="timeline-text">Мы разговаривали часами и не замечали, как летит время вокруг нас.</div>
+            </div>
+            <img src="photo2.jpg" alt="Начало нашей истории" class="timeline-img">
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fas fa-paw"></i></div>
+          <div class="timeline-content">
+            <div class="timeline-text-block">
+              <div class="timeline-date">25 апреля 2025</div>
+              <div class="timeline-title">Наш первый совместный питомец</div>
+              <div class="timeline-text">Незабываемые дни вместе, наполненные смехом, романтикой и морем.</div>
+            </div>
+            <img src="photo3.jpg" alt="Наш питомец" class="timeline-img">
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fas fa-star"></i></div>
+          <div class="timeline-content">
+            <div class="timeline-text-block">
+              <div class="timeline-date">Сегодня</div>
+              <div class="timeline-title">Наша Годовщина</div>
+              <div class="timeline-text">Каждый день с тобой — это истинное счастье.</div>
+            </div>
+            <img src="photo4.jpg" alt="Наша Годовщина" class="timeline-img">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. Интерактивные карточки с воспоминаниями -->
+    <section>
+      <h2>Наши Воспоминания</h2>
+      <p style="font-size: 0.85rem; color: #777; margin-bottom: 15px;">Нажми на карточку, чтобы открыть</p>
+      
+      <div class="gallery-grid">
+        
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <i class="fas fa-smile-beam"></i>
+              <span>Твоя улыбка</span>
+            </div>
+            <div class="flip-card-back">
+              <p>Она освещает даже самые пасмурные дни в моей жизни!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <i class="fas fa-mug-hot"></i>
+              <span>Уютные вечера</span>
+            </div>
+            <div class="flip-card-back">
+              <p>Наши просмотры фильмов под теплым пледом — лучшее время.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <i class="fas fa-hand-holding-heart"></i>
+              <span>Твоя забота</span>
+            </div>
+            <div class="flip-card-back">
+              <p>Спасибо за то, что всегда поддерживаешь и веришь в меня.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <i class="fas fa-infinity"></i>
+              <span>Наше будущее</span>
+            </div>
+            <div class="flip-card-back">
+              <p>Впереди нас ждет еще миллион счастливых моментов!</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. Генератор причин любви -->
+    <section>
+      <h2>Почему я тебя люблю?</h2>
+      <div class="reason-box">
+        <div class="reason-text" id="reason-text">Нажми на кнопку ниже, чтобы узнать одну из причин...</div>
+      </div>
+      <button class="action-btn" id="next-reason-btn">Узнать причину ✨</button>
+    </section>
+
+    <!-- 6. Письмо с признанием -->
+    <section>
+      <h2>Мое послание для тебя</h2>
+      <div class="letter-content">
+        <p>Моя дорогая и любимая!</p>
+        <p>Поздравляю нас с нашей годовщиной!(какашка) Время с тобой летит незаметно, но каждый миг наполнен особым смыслом, уютом и невероятным теплом.</p>
+        <p>Ты делаешь меня лучше каждый день. Я ценю твою добрую душу, твою поддержку, твой смех и даже то, как ты хмуришься(бесишься,топаешь).</p>
+        <p>Спасибо тебе за любовь, за понимание и за то, что ты рядом. Я бесконечно рад, что мы идем по этой жизни вместе!</p>
+        <div class="letter-signature">С любовью❤️</div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- JAVASCRIPT ДЛЯ ИНТЕРАКТИВА -->
+  <script>
+    // =========================================================================
+    // НАСТРОЙКА ДАТЫ НАЧАЛА ОТНОШЕНИЙ (7 декабря 2024 года)
+    // =========================================================================
+    const YEAR = 2024;
+    const MONTH = 12; // Декабрь
+    const DAY = 7;
+    const HOURS = 0;
+    const MINUTES = 0;
+
+    // В JS месяцы отсчитываются от 0 до 11 (поэтому MONTH - 1)
+    const startDate = new Date(YEAR, MONTH - 1, DAY, HOURS, MINUTES, 0);
+
+    function updateTimer() {
+      const now = new Date();
+      const diff = now - startDate;
+
+      if (diff < 0) {
+        document.getElementById('days').innerText = '000';
+        document.getElementById('hours').innerText = '00';
+        document.getElementById('minutes').innerText = '00';
+        document.getElementById('seconds').innerText = '00';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / 1000 / 60) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById('days').innerText = String(days).padStart(3, '0');
+      document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+      document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+    }
+
+    setInterval(updateTimer, 1000);
+    updateTimer();
+
+    // ==========================================
+    // АНИМАЦИЯ ПАДАЮЩИХ СЕРДЕЧЕК
+    // ==========================================
+    const heartsContainer = document.getElementById('hearts-container');
+    const heartIcons = ['❤️', '💖', '💗', '💓', '🌸', '✨'];
+
+    function createHeart() {
+      if (!heartsContainer) return;
+      const heart = document.createElement('div');
+      heart.classList.add('floating-heart');
+      heart.innerText = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+      
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 4 + 5) + 's';
+      heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+      
+      heartsContainer.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 9000);
+    }
+
+    setInterval(createHeart, 400);
+
+    // ==========================================
+    // ГЕНЕРАТОР ПРИЧИН ЛЮБВИ
+    // ==========================================
+    const reasons = [
+      "За твою искреннюю и самую красивую улыбку.",
+      "За твои нежные и теплые обнимашки.",
+      "За то, что рядом с тобой я могу быть самим собой.",
+      "За твою невероятную заботу в трудные моменты.",
+      "За то, что ты делаешь мой мир ярче каждый день.",
+      "За твои прекрасные глаза, в которых можно утонуть.",
+      "Просто за то, что ты есть в моей жизни!"
+    ];
+
+    let currentReasonIndex = -1;
+    const reasonText = document.getElementById('reason-text');
+    const nextReasonBtn = document.getElementById('next-reason-btn');
+
+    if (nextReasonBtn) {
+      nextReasonBtn.addEventListener('click', () => {
+        reasonText.style.opacity = '0';
+        
+        setTimeout(() => {
+          let newIndex;
+          do {
+            newIndex = Math.floor(Math.random() * reasons.length);
+          } while (newIndex === currentReasonIndex && reasons.length > 1);
+          
+          currentReasonIndex = newIndex;
+          reasonText.innerText = `«${reasons[currentReasonIndex]}»`;
+          reasonText.style.opacity = '1';
+        }, 300);
+      });
+    }
+
+    // ==========================================
+    // МУЗЫКАЛЬНЫЙ ПЛЕЕР
+    // ==========================================
+    const musicBtn = document.getElementById('music-toggle');
+    const bgMusic = document.getElementById('bg-music');
+    let isPlaying = false;
+
+    if (musicBtn && bgMusic) {
+      musicBtn.addEventListener('click', () => {
+        if (isPlaying) {
+          bgMusic.pause();
+          musicBtn.innerHTML = '<i class="fas fa-music"></i> <span>Включить музыку</span>';
+        } else {
+          bgMusic.play().catch(e => console.log("Ошибка воспроизведения:", e));
+          musicBtn.innerHTML = '<i class="fas fa-pause"></i> <span>Пауза</span>';
+        }
+        isPlaying = !isPlaying;
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,469 @@
+/* ==========================================
+   СБРОС И БАЗОВЫЕ НАСТРОЙКИ
+   ========================================== */
+:root {
+  --pink-light: #fff0f5;
+  --pink-soft: #ffe4e1;
+  --pink-medium: #ffb6c1;
+  --pink-bright: #ff69b4;
+  --pink-deep: #ff1493;
+  --pink-dark: #c71585;
+  --text-color: #4a2e35;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --shadow: 0 8px 25px rgba(255, 105, 180, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, var(--pink-light) 0%, var(--pink-soft) 50%, #ffd1dc 100%);
+  color: var(--text-color);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  padding-bottom: 40px;
+}
+
+/* ==========================================
+   АНИМИРОВАННЫЙ ФОН (СЕРДЕЧКИ)
+   ========================================== */
+#hearts-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.floating-heart {
+  position: absolute;
+  font-size: 20px;
+  animation: floatUp 8s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) scale(0.5) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1.2) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ==========================================
+   КОНТЕЙНЕР И СЕКЦИИ
+   ========================================== */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+section {
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 25px 20px;
+  margin-bottom: 25px;
+  box-shadow: var(--shadow);
+  border: 2px solid rgba(255, 182, 193, 0.4);
+  text-align: center;
+}
+
+h2 {
+  color: var(--pink-deep);
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--pink-bright), transparent);
+  border-radius: 2px;
+}
+
+/* ==========================================
+   1. ШАПКА И ПЛЕЕР
+   ========================================== */
+.hero {
+  padding: 35px 20px 25px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,228,225,0.9) 100%);
+}
+
+.hero h1 {
+  font-size: 2.2rem;
+  color: var(--pink-deep);
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.2);
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--pink-dark);
+  font-weight: 500;
+}
+
+.music-control {
+  margin-top: 15px;
+}
+
+.music-btn {
+  background: linear-gradient(45deg, var(--pink-bright), var(--pink-deep));
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 20, 147, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.music-btn:active {
+  transform: scale(0.95);
+}
+
+/* ==========================================
+   2. ТАЙМЕР
+   ========================================== */
+.timer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.timer-box {
+  background: linear-gradient(145deg, #ffffff, var(--pink-light));
+  padding: 12px 5px;
+  border-radius: 15px;
+  border: 1px solid var(--pink-medium);
+  box-shadow: 0 4px 10px rgba(255, 182, 193, 0.2);
+}
+
+.timer-value {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--pink-deep);
+  line-height: 1.2;
+}
+
+.timer-label {
+  font-size: 0.75rem;
+  color: var(--pink-dark);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================
+   3. ИСТОРИЯ ЛЮБВИ (TIMELINE)
+   ========================================== */
+.timeline {
+  position: relative;
+  padding: 10px 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--pink-medium);
+  border-radius: 2px;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 50px;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-icon {
+  position: absolute;
+  left: 6px;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  background: var(--pink-bright);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  box-shadow: 0 0 0 4px var(--pink-light);
+}
+
+.timeline-content {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid var(--pink-soft);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+}
+
+.timeline-date {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--pink-deep);
+  margin-bottom: 4px;
+}
+
+.timeline-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.timeline-text {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* ==========================================
+   4. ГАЛЕРЕЯ (FLIP CARDS)
+   ========================================== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 15px;
+}
+
+.flip-card {
+  background-color: transparent;
+  height: 170px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 2px solid var(--pink-medium);
+}
+
+.flip-card-front {
+  background: linear-gradient(135deg, var(--pink-soft), #fff);
+  color: var(--pink-dark);
+}
+
+.flip-card-front i {
+  font-size: 2.5rem;
+  color: var(--pink-bright);
+  margin-bottom: 8px;
+}
+
+.flip-card-front span {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.flip-card-back {
+  background: linear-gradient(135deg, var(--pink-bright), var(--pink-deep));
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.flip-card-back p {
+  font-size: 0.85rem;
+  line-height: 1.3;
+}
+
+/* ==========================================
+   5. ГЕНЕРАТОР ПРИЧИН
+   ========================================== */
+.reason-box {
+  min-height: 100px;
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  border: 2px dashed var(--pink-medium);
+}
+
+.reason-text {
+  font-size: 1.05rem;
+  color: var(--pink-dark);
+  font-style: italic;
+  transition: opacity 0.3s;
+}
+
+.action-btn {
+  background: linear-gradient(45deg, var(--pink-bright), var(--pink-deep));
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: 100%;
+  max-width: 250px;
+}
+
+.action-btn:active {
+  transform: scale(0.96);
+}
+
+/* ==========================================
+   6. ПРИЗНАНИЕ И ПИСЬМО
+   ========================================== */
+.letter-content {
+  text-align: left;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 4px solid var(--pink-bright);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.letter-content p {
+  margin-bottom: 12px;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.letter-signature {
+  text-align: right;
+  font-weight: bold;
+  color: var(--pink-deep);
+  margin-top: 15px;
+}
+
+/* ==========================================
+   АДАПТИВНОСТЬ ПОД МОБИЛЬНЫЕ УСТРОЙСТВА
+   ========================================== */
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  .timer-grid {
+    gap: 6px;
+  }
+  
+  .timer-value {
+    font-size: 1.3rem;
+  }
+  
+  .timer-label {
+    font-size: 0.65rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  section {
+    padding: 20px 15px;
+    border-radius: 16px;
+  }
+}
+/* Обновленный блок текста истории */
+.timeline-content {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid var(--pink-soft);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+  
+  /* Включаем выравнивание по горизонтали (текст слева, фото справа) */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+/* Контейнер с текстом внутри карточки */
+.timeline-text-block {
+  flex: 1; /* Текст занимает всё свободное место слева */
+}
+
+/* Обновленный стиль для фотографии справа */
+.timeline-img {
+  width: 100px;         /* Ширина фото */
+  height: 100px;        /* Высота фото */
+  object-fit: cover;    /* Сохраняет пропорции фото без искажения */
+  border-radius: 10px;
+  border: 2px solid var(--pink-soft);
+  flex-shrink: 0;       /* Запрещает фото сжиматься */
+}
+
+/* На совсем маленьких экранах (телефонах) фото мягко уменьшится */
+@media (max-width: 480px) {
+  .timeline-img {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .timeline-content {
+    gap: 10px;
+    padding: 12px;
+  }
+}
