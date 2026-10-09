@@ -13,6 +13,20 @@
 </head>
 <body>
 
+  <!-- 0. ОКНО ВВОДА ПАРОЛЯ ПРИ ВХОДЕ -->
+  <div id="pass-modal" class="pass-modal">
+    <div class="pass-box">
+      <div class="pass-icon"><i class="fas fa-lock"></i></div>
+      <h2>Закрытый доступ ❤️</h2>
+      <p>Введи секретный код, чтобы открыть наш сайт:</p>
+      
+      <input type="password" id="pass-input" class="pass-input" placeholder="Пароль..." pattern="[0-9]*" inputmode="numeric">
+      <button id="pass-btn" class="pass-btn">Войти</button>
+      
+      <div id="pass-error" class="pass-error">Неверный пароль! Доступ запрещен ⛔</div>
+    </div>
+  </div>
+
   <!-- Анимированный фон -->
   <div id="hearts-container"></div>
 
@@ -58,7 +72,7 @@
       </div>
     </section>
 
-    <!-- 3. Наша история (Фото расположено СПРАВА от текста) -->
+    <!-- 3. Наша история -->
     <section>
       <h2>Наша История Любви</h2>
       <div class="timeline">
@@ -114,7 +128,7 @@
       </div>
     </section>
 
-    <!-- 4. Интерактивные карточки с воспоминаниями -->
+    <!-- 4. Интерактивные карточки -->
     <section>
       <h2>Наши Воспоминания</h2>
       <p style="font-size: 0.85rem; color: #777; margin-bottom: 15px;">Нажми на карточку, чтобы открыть</p>
@@ -172,7 +186,7 @@
       </div>
     </section>
 
-    <!-- 5. Генератор причин любви -->
+    <!-- 5. Генератор причин -->
     <section>
       <h2>Почему я тебя люблю?</h2>
       <div class="reason-box">
@@ -181,7 +195,7 @@
       <button class="action-btn" id="next-reason-btn">Узнать причину ✨</button>
     </section>
 
-    <!-- 6. Письмо с признанием -->
+    <!-- 6. Послание -->
     <section>
       <h2>Мое послание для тебя</h2>
       <div class="letter-content">
@@ -195,19 +209,82 @@
 
   </div>
 
-  <!-- JAVASCRIPT ДЛЯ ИНТЕРАКТИВА -->
-  <script>
-    // =========================================================================
-    // НАСТРОЙКА ДАТЫ НАЧАЛА ОТНОШЕНИЙ (7 декабря 2024 года)
-    // =========================================================================
-    const YEAR = 2024;
-    const MONTH = 12; // Декабрь
-    const DAY = 7;
-    const HOURS = 0;
-    const MINUTES = 0;
+  <!-- ПОДКЛЮЧЕНИЕ FIREBASE И СКРИПТОВ -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-    // В JS месяцы отсчитываются от 0 до 11 (поэтому MONTH - 1)
-    const startDate = new Date(YEAR, MONTH - 1, DAY, HOURS, MINUTES, 0);
+    // ВАШИ УНИКАЛЬНЫЕ КЛЮЧИ ИЗ FIREBASE
+    const firebaseConfig = {
+      apiKey: "AIzaSyBGTItA2E1_OZKu63TCvg_yles2JvNQccI",
+      authDomain: "love-861a9.firebaseapp.com",
+      projectId: "love-861a9",
+      storageBucket: "love-861a9.firebasestorage.app",
+      messagingSenderId: "1066069354890",
+      appId: "1:1066069354890:web:5f0af7386da0713f148073",
+      measurementId: "G-LNWVMT499V"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const passModal = document.getElementById('pass-modal');
+    const passInput = document.getElementById('pass-input');
+    const passBtn = document.getElementById('pass-btn');
+    const passError = document.getElementById('pass-error');
+
+    // Проверка пароля через Firestore
+    async function checkPassword() {
+      passBtn.innerText = "Проверка...";
+      passBtn.disabled = true;
+
+      try {
+        const docRef = doc(db, "config", "security");
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists() && passInput.value.trim() === docSnap.data().password) {
+          passModal.classList.add('hidden');
+          document.body.style.overflow = 'auto'; // Включаем скролл
+        } else {
+          showErrorAndKick();
+        }
+      } catch (e) {
+        console.error("Ошибка проверки:", e);
+        showErrorAndKick();
+      } finally {
+        passBtn.innerText = "Войти";
+        passBtn.disabled = false;
+      }
+    }
+
+    function showErrorAndKick() {
+      passError.style.display = 'block';
+      passError.innerText = "Неверный пароль! Доступ запрещен ⛔";
+      passInput.value = '';
+      
+      // Выкидываем на google.com через 1.5 секунды
+      setTimeout(() => {
+        window.location.href = "https://www.google.com";
+      }, 1500);
+    }
+
+    if (passBtn && passInput) {
+      passBtn.addEventListener('click', checkPassword);
+      passInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') checkPassword();
+      });
+    }
+
+    // Блокируем скролл, пока не введен пароль
+    document.body.style.overflow = 'hidden';
+
+    // ==========================================
+    // НАСТРОЙКА ДАТЫ НАЧАЛА ОТНОШЕНИЙ
+    // ==========================================
+    const YEAR = 2024;
+    const MONTH = 12; 
+    const DAY = 7;
+    const startDate = new Date(YEAR, MONTH - 1, DAY, 0, 0, 0);
 
     function updateTimer() {
       const now = new Date();
